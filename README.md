@@ -87,10 +87,29 @@ _____________________________________________________
 **Every Channel in Detail**
 _____________________________________________________
 
-**roll-assignment:**
-    visiblity:
-    see-message:
-    send-message:
-    send-link:
-    attach-file:
+***Announcements***
+    **club-official-announcements**
+        visiblity: @everyone
+        see-message: @everyone
+        send-message: @Manager @Moderator @Executives
+        send-link: @Manager @Moderator @Executives
+        attach-file: @Manager @Moderator @Executives
+        about:This is to publish KUCC Official notices.
+    **external-announcements**
+        visiblity: @everyone
+        see-message: @everyone
+        send-message: @Manager @Moderator @Executives
+        send-link: @Manager @Moderator @Executives
+        attach-file: @Manager @Moderator @Executives
+        about:This is to publish 3rd party and unofficial notices.
+    **upcoming-events**
+        visiblity: @everyone
+        see-message: @everyone
+        send-message: @Manager @Moderator @Executives @CommunityLeader
+        send-link: @Manager @Moderator @Executives @CommunityLeader
+        attach-file: @Manager @Moderator @Executives @CommunityLeader
+        about:This i
+    
+
+
 
