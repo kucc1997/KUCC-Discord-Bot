@@ -1,20 +1,24 @@
 # KUCC-Discord-Bot
 
-Requirements:
-    1. KUCC Role Member Ticket Bot
-    2. Access to Managers, Moderators, Executives
+_______________________________________________________________________
+Requirements:  
+_______________________________________________________________________
+    KUCC Role Member Ticket Bot  
+    Access to Managers, Moderators, Executives  
 
 _______________________________________________________________________
 **Roles**
 _______________________________________________________________________
-**Manager:**
-**Moderator:**
-**Executives:**
-**CommunityLeader:**
-**KUCC Members:**
-**KU Students:**
-**Community:** *(for each)*
-**Community Mentors** *(for each)*
+**@Manager**  
+**@Moderator:**  
+**@Executives:**  
+**@AdvisioryBoard**  
+**@CommunityLeader:**  
+**@KUCC Members:**  
+**@KU Students:**  
+**Alumni**
+**@Community:** *(for each)*  
+**@Community Mentors** *(for each)*  
 
 
 _______________________________________________________________________
@@ -88,27 +92,33 @@ _____________________________________________________
 _____________________________________________________
 
 ***Announcements***  
-    **club-official-announcements**  
-        visiblity: @everyone  
-        see-message: @everyone  
-        send-message: @Manager @Moderator @Executives  
-        send-link: @Manager @Moderator @Executives  
-        attach-file: @Manager @Moderator @Executives  
-        about:This is to publish KUCC Official notices.  
-    **external-announcements**  
-        visiblity: @everyone  
-        see-message: @everyone  
-        send-message: @Manager @Moderator @Executives  
-        send-link: @Manager @Moderator @Executives  
-        attach-file: @Manager @Moderator @Executives  
-        about:This is to publish 3rd party and unofficial notices.  
-    **upcoming-events**  
-        visiblity: @everyone  
-        see-message: @everyone  
-        send-message: @Manager @Moderator @Executives @CommunityLeader  
-        send-link: @Manager @Moderator @Executives @CommunityLeader  
-        attach-file: @Manager @Moderator @Executives @CommunityLeader  
-        about:This i
+
+**club-official-announcements**  
+    visiblity: @everyone  
+    see-message: @everyone  
+    send-message: @Manager @Moderator @Executives  
+    send-link: @Manager @Moderator @Executives  
+    attach-file: @Manager @Moderator @Executives  
+    about:
+        This is to publish KUCC Official notices.  
+
+**external-announcements**  
+    visiblity: @everyone  
+    see-message: @everyone  
+    send-message: @Manager @Moderator @Executives  
+    send-link: @Manager @Moderator @Executives  
+    attach-file: @Manager @Moderator @Executives  
+    about:
+        This is to publish 3rd party and unofficial notices.  
+
+**upcoming-events**  
+    visiblity: @everyone  
+    see-message: @everyone  
+    send-message: @Manager @Moderator @Executives @CommunityLeader  
+    send-link: @Manager @Moderator @Executives @CommunityLeader  
+    attach-file: @Manager @Moderator @Executives @CommunityLeader  
+    about:
+        This i
     
 
 
