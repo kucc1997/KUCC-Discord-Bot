@@ -10,9 +10,13 @@ from cogs.welcomer import Welcomer
 load_dotenv()
 TOKEN = os.getenv("TOKEN")
 
+##intents
+intents = discord.Intents.default()
+intents.members = True
+
 ## bot
 description = "Official bot for KUCC discord server"
-bot = commands.Bot(command_prefix=">", description=description)
+bot = commands.Bot(command_prefix=">", description=description, intents=intents)
 
 # run
 @bot.event
