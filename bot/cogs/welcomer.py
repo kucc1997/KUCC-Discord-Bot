@@ -71,3 +71,5 @@ class Welcomer(commands.Cog):
                 name="KUCC", icon_url="https://i.imgur.com/nnpCujW.png")
             await channel.send(embed=embed, file=file)
 
+def setup(bot):
+    bot.add_cog(Welcomer(bot))
