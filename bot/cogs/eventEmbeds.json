@@ -1,0 +1,56 @@
+{
+    "titleEmbed": [
+        {
+            "title": "Enter the event title",
+            "description": "> Upto 200 characters permitted",
+            "timeout": "1 minute",
+            "colour": 1234567,
+            "footer": "To exit, type 'cancel'"
+        }
+    ],
+    "discriptionEmbed": [
+        {
+            "title": "Enter the event description",
+            "description": "> Upto 1500 characters permitted",
+            "timeout": "5 minutes",
+            "colour": 1234567,
+            "footer": "To exit, type 'cancel'"
+        }
+    ],
+    "startTimeEmbed": [
+        {
+            "title": "When will the event start?",
+            "description": "`format: YYYY-MM-DD 7:00PM`",
+            "timeout": "2 minutes",
+            "colour": 1234567,
+            "footer": "To exit, type 'cancel'"
+        }
+    ],
+    "endTimeEmbed": [
+        {
+            "title": "When will the event end?",
+            "description": "`format: YYYY-MM-DD 7:00PM`",
+            "timeout": "2 minutes",
+            "colour": 1234567,
+            "footer": "To exit, type 'cancel'"
+        }
+    ],
+    "rolesMentionEmbed": [
+        {
+            "title": "Which roles do you want to mention when the event starts?",
+            "description": "Separate the roles with commas.\n Type `None` if you do not want to mention any role.",
+            "timeout": "2 minutes",
+            "colour": 1234567,
+            "footer": "To exit, type 'cancel'"
+        }
+    ],
+    "finalEmbed": [
+        {
+            "title": "The event has been successfully created",
+            "description": "Click here to view the event",
+            "colour": 1234567,
+            "footer":"Thank You!"
+        }
+    ]
+
+}
