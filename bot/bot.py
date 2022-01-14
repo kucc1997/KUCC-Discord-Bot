@@ -5,6 +5,7 @@ from discord.ext import commands
 from dotenv import load_dotenv
 
 from cogs.welcomer import Welcomer
+from cogs.roleshandler import RolesHandler
 
 ## Loading env variables
 load_dotenv()
@@ -12,7 +13,9 @@ TOKEN = os.getenv("TOKEN")
 
 ## bot
 description = "Official bot for KUCC discord server"
-bot = commands.Bot(command_prefix=">", description=description)
+intents = discord.Intents().default()
+intents.members = True
+bot = commands.Bot(command_prefix=">", description=description, intents=intents)
 
 # run
 @bot.event
@@ -23,5 +26,6 @@ async def on_ready():
 
 # cogs
 bot.add_cog(Welcomer(bot))
+bot.add_cog(RolesHandler(bot))
 
 bot.run(TOKEN)
