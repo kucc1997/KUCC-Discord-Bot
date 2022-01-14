@@ -1,125 +1,59 @@
 # KUCC-Discord-Bot
 
-_______________________________________________________________________
-Requirements:  
-_______________________________________________________________________
-    KUCC Role Member Ticket Bot  
-    Access to Managers, Moderators, Executives  
+___________________________________________________________
 
-_______________________________________________________________________
-**Roles**
-_______________________________________________________________________
-**@Manager**  
-**@Moderator:**  
-**@Executives:**  
-**@AdvisioryBoard**  
-**@CommunityLeader:**  
-**@KUCC Members:**  
-**@KU Students:**  
-**Alumni**
-**@Community:** *(for each)*  
-**@CommunityMentors:** *(for each)*  
+This is the repository of the Discord Bot written in Python programming language for the Official Discord Server of Kathmandu University Computer Club.
+
+___________________________________________________________
+
+**INSTALLATION**
+
+First make a python virtual environment:
+
+```
+    $ python -m venv env
+```
 
 
-_______________________________________________________________________
-**Server Layout**
-_______________________________________________________________________
+Then you need activate the virtual environment:
 
-**Announcements:**  
-    club-official-announcements *(Official Club Related only)*  
-    external-announcements *(3rd party announcements forwarded)*  
-    upcomming-events  
-
-**Server Management:**  
-    server-changelog  
-    server-moderation  
-    new-idea  
-    server-logs  
-
-**On Boarding:**  
-    welcome  
-    getting-started  
-    code-of-conduct  
-    role-assignment  
-
-**KUCC Executive Zone:**  
-    kucc-memo  
-    kucc-discussion  
-    kucc-voice  
-
-**KUOSC Co-Ordinator Zone:**  
-    kuosc-memo  
-    kuosc-discussion  
-    kuosc-voice  
-
-**General Discussions:**  
-    chat  
-    suggestions-feedback  
-    gen-voice  
-
-**Gallery:**  
-    (per events)  
-
-**Opportunities:**  
-    job-internship  
-
-**KUCC Support:** *(only for members)*  
-    mentor-help  
-
-**Fun Catagory:**  
-    memes  
-    music-n-dance  
-    foodies  
-    arts  
-    off-time-voice  
-
-**Games:**  
-    scribble  
-
-**Community:** *(for each)*  
-    community-notice  
-    community-help  
-    community-resources  
-    community-chat  
-    community-voice  
-
-**Workshops:**  
-    upcoming-workshops  
+```
+    $ # For Windows we use 
+    $ ./env/Scripts/Activate.ps1 # for powershell
+    $ ./env/Scripts/activate.bat # for Command Prompt
+    $ # For POSIX
+    $ source env/Scripts/Activate
+```
 
 
-_____________________________________________________
-**Every Channel in Detail**
-_____________________________________________________
+Finally you need to install the necessary python packages.
+The names of required packages are in *requirements.txt*.
 
-***Announcements***  
+```
+    $ python -m pip install -r requirements.txt
+```
 
-**club-official-announcements**  
-    visiblity: @everyone  
-    see-message: @everyone  
-    send-message: @Manager @Moderator @Executives  
-    send-link: @Manager @Moderator @Executives  
-    attach-file: @Manager @Moderator @Executives  
-    about:
-        This is to publish KUCC Official notices.  
+Now you can run the project.
 
-**external-announcements**  
-    visiblity: @everyone  
-    see-message: @everyone  
-    send-message: @Manager @Moderator @Executives  
-    send-link: @Manager @Moderator @Executives  
-    attach-file: @Manager @Moderator @Executives  
-    about:
-        This is to publish 3rd party and unofficial notices.  
+___________________________________________________________
 
-**upcoming-events**  
-    visiblity: @everyone  
-    see-message: @everyone  
-    send-message: @Manager @Moderator @Executives @CommunityLeader  
-    send-link: @Manager @Moderator @Executives @CommunityLeader  
-    attach-file: @Manager @Moderator @Executives @CommunityLeader  
-    about:
-        This i
-    
+**BUILDING DOCUMENTATION**
 
+To build the documentation file locally.
 
+```
+    $ cd docs
+    $ ./make html   # This make it into locally available html webpages.
+```
+You can build the documentation files in different file formats.
+However, Extensions are required to build it in other formats.
 
+___________________________________________________________
+
+**FOR CONTRIBUTUION**
+
+first fork the master repo then create a new branch in the new fork.
+Then add your code and commit it to your fork.
+Create a pull requst and link the pull request to the relevant issue.
+
+___________________________________________________________

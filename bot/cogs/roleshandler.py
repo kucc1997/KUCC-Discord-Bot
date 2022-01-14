@@ -24,7 +24,6 @@ class RolesHandler(commands.Cog):
                 guild = discord.utils.find(lambda g: g.id == guild_id, self.bot.guilds)
 
                 for r in res[message["type"]]["roles"]:
-                    print(r, payload.emoji.name)
                     names = r.get("emoji"), r.get("emojiname"), r.get("name")
                     if payload.emoji.name in names:
                         role_name = r["name"]
@@ -122,3 +121,6 @@ class RolesHandler(commands.Cog):
         with open(json_path, "w") as jfile:
             res["message_ids"] = MESSAGE_IDS
             json.dump(res, jfile)
+        
+def setup(bot):
+    bot.add_cog(RolesHandler(bot))

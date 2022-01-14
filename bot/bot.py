@@ -1,6 +1,5 @@
 import discord
 import os
-
 from discord.ext import commands
 from dotenv import load_dotenv
 
@@ -10,6 +9,10 @@ from cogs.roleshandler import RolesHandler
 ## Loading env variables
 load_dotenv()
 TOKEN = os.getenv("TOKEN")
+
+##intents
+intents = discord.Intents.default()
+intents.members = True
 
 ## bot
 description = "Official bot for KUCC discord server"
@@ -21,11 +24,32 @@ bot = commands.Bot(command_prefix=">", description=description, intents=intents)
 @bot.event
 async def on_ready():
     print('Logged in as', bot.user)
-    # channel = bot.get_channel(929217867642187826)
-    # await channel.send("Up and running :)")
 
-# cogs
-bot.add_cog(Welcomer(bot))
-bot.add_cog(RolesHandler(bot))
+#loads all cogs by default 
+for filename in os.listdir("./bot/cogs"):
+    if filename.endswith('.py'):
+        bot.load_extension(f'cogs.{filename[:-3]}')
+     
+#loads a cog   
+@commands.has_role('Manager')
+@bot.command()
+async def load(ctx, extension):
+    bot.load_extension(f'cogs.{extension}')
+    await ctx.send("Loaded Successfully")
+
+#unloads a cog
+@commands.has_role('Manager')
+@bot.command()
+async def unload(ctx, extension):
+    bot.unload_extension(f'cogs.{extension}')
+    await ctx.send("Unloaded Successfully")
+
+#reloads a cog
+@commands.has_role('Manager')
+@bot.command()
+async def reload(ctx, extension):
+    bot.unload_extension(f'cogs.{extension}')
+    bot.load_extension(f'cogs.{extension}')
+    await ctx.send("Reloaded Successfully")
 
 bot.run(TOKEN)
