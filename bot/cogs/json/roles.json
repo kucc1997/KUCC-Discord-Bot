@@ -1,1 +1,106 @@
-{"default_role_channel": 929217916912680970, "community": {"roles": [{"name": "Python", "color": "#3572A5", "emoji": "<:python:929338071424589844>", "emojiname": "python"}, {"name": "Javascript", "color": "#f1e05a", "emoji": "<:javascript:929338038809657345>", "emojiname": "javascript"}, {"name": "Cyber-Security", "color": "#000001", "emoji": "<:hacker:931470353346220042>", "emojiname": "hacker"}, {"name": "Game-Dev", "color": "#56703a", "emoji": "\ud83c\udfae", "emojiname": "\ud83c\udfae"}, {"name": "ML", "color": "#9e5cb2", "emoji": "<:ml:931448041934819329>", "emojiname": "ml"}, {"name": "Dart", "color": "#00B4AB", "emoji": "<:dartt:931469737890820116>", "emojiname": "dartt"}]}, "class": {"roles": [{"name": "CE", "emoji": "<:CE:931544605529362442>"}, {"name": "CS", "emoji": "<:CS:931544617671884880>"}]}, "member": {"roles": [{"name": "KUCC-Member"}]}, "status": {"roles": [{"name": "KUStudent", "emoji": "<:ku:931547522026049587>"}, {"name": "KUAlumni", "emoji": "<:oldku:931547538224451684>"}, {"name": "Working", "emoji": "\ud83e\uddd1\u200d\ud83d\udcbc", "emojiname": "office_worker"}, {"name": "Out Student", "emoji": "\ud83d\ude47", "emojiname": "person_bowing"}]}, "message_ids": [{"id": 931545112817836034, "type": "class"}, {"id": 931545119855890462, "type": "community"}, {"id": 931545378657038386, "type": "class"}, {"id": 931545386433269850, "type": "community"}, {"id": 931555114899107841, "type": "status"}, {"id": 931555127775608922, "type": "class"}, {"id": 931555134599725106, "type": "community"}, {"id": 931555465710665838, "type": "status"}, {"id": 931555477970632755, "type": "class"}, {"id": 931555485616844800, "type": "community"}, {"id": 931555657470078976, "type": "status"}, {"id": 931555669444816927, "type": "class"}, {"id": 931555676256362506, "type": "community"}, {"id": 931561605026685008, "type": "status"}, {"id": 931561618112933959, "type": "class"}, {"id": 931561625662660609, "type": "community"}]}
+{
+    "default_role_channel1": 932855435524988978,
+    "default_role_channel2": 932855498091409438,
+    "community": {
+        "roles": [
+            {
+                "name": "Python",
+                "color": "#3572A5",
+                "emoji": "<:python:929338071424589844>",
+                "emojiname": "python"
+            },
+            {
+                "name": "Javascript",
+                "color": "#f1e05a",
+                "emoji": "<:javascript:929338038809657345>",
+                "emojiname": "javascript"
+            },
+            {
+                "name": "Cyber-Security",
+                "color": "#000001",
+                "emoji": "<:hacker:931470353346220042>",
+                "emojiname": "hacker"
+            },
+            {
+                "name": "Game-Dev",
+                "color": "#56703a",
+                "emoji": "\ud83c\udfae",
+                "emojiname": "\ud83c\udfae"
+            },
+            {
+                "name": "ML",
+                "color": "#9e5cb2",
+                "emoji": "<:ml:931448041934819329>",
+                "emojiname": "ml"
+            },
+            {
+                "name": "Dart",
+                "color": "#00B4AB",
+                "emoji": "<:dartt:931469737890820116>",
+                "emojiname": "dartt"
+            }
+        ]
+    },
+    "class": {
+        "roles": [
+            {
+                "name": "CE",
+                "emoji": "<:CE:931544605529362442>"
+            },
+            {
+                "name": "CS",
+                "emoji": "<:CS:931544617671884880>"
+            }
+        ]
+    },
+    "member": {
+        "roles": [
+            {
+                "name": "KUCC Member"
+            }
+        ]
+    },
+    "status": {
+        "roles": [
+            {
+                "name": "KU Student",
+                "emoji": "<:ku:931547522026049587>",
+                "emojiname": "KUStudent"
+            },
+            {
+                "name": "KU Alumni",
+                "emoji": "<:oldku:931547538224451684>",
+                "emojiname": "KUAlumni"
+            },
+            {
+                "name": "Working",
+                "emoji": "\ud83e\uddd1\u200d\ud83d\udcbc",
+                "emojiname": "office_worker"
+            },
+            {
+                "name": "Out Student",
+                "emoji": "\ud83d\ude47",
+                "emojiname": "person_bowing"
+            }
+        ]
+    },
+    "message_ids": [
+        {
+            "id": 932968268203974696,
+            "type": "status"
+        },
+        {
+            "id": 932968281114046535,
+            "type": "class"
+        },
+        {
+            "id": 932968298306478100,
+            "type": "member"
+        },
+        {
+            "id": 932968316912410644,
+            "type": "community"
+        }
+    ],
+    "verify-channels": []
+}

@@ -1,7 +1,9 @@
 import discord
 import os
+
 from discord.ext import commands
 from dotenv import load_dotenv
+from discord_components import DiscordComponents
 
 from cogs.welcomer import Welcomer
 from cogs.roleshandler import RolesHandler
@@ -20,9 +22,9 @@ intents = discord.Intents().default()
 intents.members = True
 bot = commands.Bot(command_prefix=">", description=description, intents=intents)
 
-# run
 @bot.event
 async def on_ready():
+    DiscordComponents(bot)
     print('Logged in as', bot.user)
 
 #loads all cogs by default 
