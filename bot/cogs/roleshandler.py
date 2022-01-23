@@ -56,6 +56,9 @@ class RolesHandler(commands.Cog):
         
     
     async def react_role(self, action, payload):
+        with open(json_path, mode="r") as jfile:
+            res = json.load(jfile)
+            
         if payload.user_id == self.bot.user.id:
             return
 
@@ -101,6 +104,7 @@ class RolesHandler(commands.Cog):
                 else:
                     print("Member not found")
 
+    @commands.has_role("Manager")
     @commands.command(name="ccr")
     async def create_roles(self, ctx):
         guild = ctx.guild
@@ -108,7 +112,7 @@ class RolesHandler(commands.Cog):
             await guild.create_role(name=role["name"], colour=discord.Colour(int(role["color"].replace("#", "0x"), 16)), mentionable = True)
             print(f"Creating {role['name']} role... in {guild.name} server")
 
-    
+    @commands.has_role("Manager")
     @commands.command(name="dcr")
     async def delete_roles(self, ctx):
         guild = ctx.guild
@@ -116,7 +120,7 @@ class RolesHandler(commands.Cog):
             role_object = discord.utils.get(guild.roles, name=role["name"])
             await role_object.delete()
 
-    
+    @commands.has_role("Manager")
     @commands.command(name="sutc")
     async def set_up_text_channel(self, ctx=None, *channel: discord.TextChannel):
         if not channel:

@@ -12,6 +12,7 @@ from cogs.roleshandler import RolesHandler
 load_dotenv()
 TOKEN = os.getenv("TOKEN")
 
+
 ##intents
 intents = discord.Intents.default()
 intents.members = True
