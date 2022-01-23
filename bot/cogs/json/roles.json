@@ -60,6 +60,14 @@
             }
         ]
     },
+    "event": {
+        "roles": [
+            {
+                "name": "Intro To Ml Workshop",
+                "emoji": "\u2611\ufe0f"
+            }
+        ]
+    },
     "status": {
         "roles": [
             {
@@ -84,23 +92,6 @@
             }
         ]
     },
-    "message_ids": [
-        {
-            "id": 932968268203974696,
-            "type": "status"
-        },
-        {
-            "id": 932968281114046535,
-            "type": "class"
-        },
-        {
-            "id": 932968298306478100,
-            "type": "member"
-        },
-        {
-            "id": 932968316912410644,
-            "type": "community"
-        }
-    ],
+    "message_ids": [],
     "verify-channels": []
 }
