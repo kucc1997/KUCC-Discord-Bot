@@ -5,7 +5,8 @@ from discord_components import Button, ButtonStyle, InteractionEventType
 import json, os, asyncio
 from typing import Tuple
 
-json_path =  os.path.join(os.getcwd(), "bot", "cogs", "json", "roles.json")
+# json_path =  ".cogs\json\roles.json"
+json_path =  os.path.join(os.getcwd(), "cogs", "json", "roles.json")
 with open(json_path, mode="r") as jfile:
     res = json.load(jfile)
     COMMUNITY_ROLES = res["community"]["roles"]
@@ -20,14 +21,14 @@ class RolesHandler(commands.Cog):
         self.bot = bot
         self.channel1 = None
         self.channel2 = None
-    
+
     def _get_role_message(self, msg, roles):
         msg += "**——————————————————————————————\n"
         for role in roles:
             msg += f"{role['name']} - {role['emoji']}\n"
         msg += "——————————————————————————————**\n"
         return msg
-    
+
     async def _verify_id(self, context, member):
         global VERIFY_CHANNELS_COUNT
         channel_name = "verify-membership-" + str(VERIFY_CHANNELS_COUNT+1)
@@ -52,13 +53,13 @@ class RolesHandler(commands.Cog):
             VERIFY_CHANNELS_COUNT += 1
             await self.verify_id(context, member)
 
-        await channel.send(f"{member.mention} Verify your membership by sending picture or digital image of your KUCC Membership card. Once the {admin_role.mention} confirm your validity, you will be given the KUCC Member role.") 
-        
-    
+        await channel.send(f"{member.mention} Verify your membership by sending picture or digital image of your KUCC Membership card. Once the {admin_role.mention} confirm your validity, you will be given the KUCC Member role.")
+
+
     async def react_role(self, action, payload):
         with open(json_path, mode="r") as jfile:
             res = json.load(jfile)
-            
+
         if payload.user_id == self.bot.user.id:
             return
 
@@ -74,7 +75,7 @@ class RolesHandler(commands.Cog):
                         break
                 else:
                     role_name = None
-                
+
                 role = discord.utils.get(guild.roles, name=role_name)
                 member = discord.utils.find(lambda m: m.id == payload.user_id, guild.members)
                 if not role:
@@ -91,14 +92,14 @@ class RolesHandler(commands.Cog):
                         await message1.remove_reaction(payload.emoji, member)
                     except:
                         pass
-                    
+
                     try:
                         message2 = await self.channel2.fetch_message(message["id"])
                         await message2.remove_reaction(payload.emoji, member)
                     except:
                         pass
                     return
-                
+
                 if member is not None:
                     await getattr(member, action)(role)
                 else:
@@ -146,7 +147,7 @@ class RolesHandler(commands.Cog):
     @commands.Cog.listener()
     async def on_raw_reaction_remove(self, payload):
         await self.react_role("remove_roles", payload)
-        
+
     @commands.has_role("Manager")
     @commands.command()
     async def verify(self, ctx, member: discord.Member):
@@ -167,13 +168,13 @@ class RolesHandler(commands.Cog):
         VERIFY_CHANNELS_COUNT -= 1
         await channel.delete()
 
-    
+
     @commands.has_role("Manager")
     @commands.command(name="surr")
     async def set_up_reaction_roles(self, ctx):
         if not self.channel1:
             await self.set_up_text_channel(ctx)
-        
+
         global MESSAGE_IDS
 
         # Introductory message
@@ -196,12 +197,12 @@ class RolesHandler(commands.Cog):
         MESSAGE_IDS.append({"id": message.id, "type": "class"})
         for role in res["class"]["roles"]:
             await message.add_reaction(role["emoji"])
-        
+
         ## KUCC Member
         message = await self.channel2.send(file=discord.File("assets/kuccMember.png"), components = [
             [Button(label="Yes, Verify", style=ButtonStyle.green, custom_id="verify"),
             Button(label="No, Apply", style=ButtonStyle.URL, url="http://kucc.ku.edu.np/register/")]]);
-        
+
         # response = await self.bot.wait_for("button_click", check=lambda i: i.custom_id == "verify")
         # if response:
         #     member = discord.utils.find(lambda m: m.id == response.user.id, ctx.guild.members)
@@ -222,10 +223,10 @@ class RolesHandler(commands.Cog):
 
         for role in COMMUNITY_ROLES:
             await message.add_reaction(role["emoji"])
-        
+
         with open(json_path, "w") as jfile:
             res["message_ids"] = MESSAGE_IDS
             json.dump(res, jfile, indent = 4)
-        
+
 def setup(bot):
     bot.add_cog(RolesHandler(bot))

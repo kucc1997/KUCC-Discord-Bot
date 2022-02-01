@@ -18,7 +18,7 @@ def circle(avatar, size=(400, 400)):
 class Welcomer(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        
+
     @commands.Cog.listener()
     async def on_member_join(self, member):
         channel = self.bot.get_channel(welcome_channel_id)
@@ -44,14 +44,14 @@ class Welcomer(commands.Cog):
             # fetch user image
             userAvatar = member.avatar_url_as(size=256)
             userPic = Image.open(BytesIO(await userAvatar.read())).convert("RGBA")
-            
+
             #crop circular user profile image and add border
-            avatar = circle(userPic, (400,400))            
+            avatar = circle(userPic, (400,400))
 
             # paste userPic in background
             background.paste(avatar, (130, 150), avatar)
 
-            #for long user names 
+            #for long user names
             name = f"{member.name[:20]}.." if len(member.name) > 20 else member.name
 
             # write text
@@ -65,7 +65,7 @@ class Welcomer(commands.Cog):
             background.convert("RGB").save("assets/welcomeImage.jpg")
             file = discord.File("assets/welcomeImage.jpg", filename="welcomeImg.jpg")
 
-            #embeds 
+            #embeds
             embed.set_image(url="attachment://welcomeImg.jpg")
             embed.set_author(
                 name="KUCC", icon_url="https://i.imgur.com/nnpCujW.png")

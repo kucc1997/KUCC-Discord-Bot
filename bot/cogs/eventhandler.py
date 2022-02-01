@@ -1,7 +1,7 @@
 from discord.ext import commands
 import discord, os, json
 
-json_path =  os.path.join(os.getcwd(), "bot", "cogs", "json", "roles.json")
+json_path =  os.path.join(os.getcwd(), "cogs", "json", "roles.json")
 with open(json_path, mode="r") as jfile:
     res = json.load(jfile)
     MESSAGE_IDS = res["message_ids"]
@@ -20,7 +20,7 @@ class EventHandler(commands.Cog):
             return
         else:
             event = " ".join([e.title() for e in event])
-            event_role = await guild.create_role(name=event, colour=discord.Colour.random(), mentionable=True)         
+            event_role = await guild.create_role(name=event, colour=discord.Colour.random(), mentionable=True)
             admin_role = discord.utils.get(guild.roles, name="Manager")
             overwrites = {
                 guild.default_role: discord.PermissionOverwrite(read_messages=False),
@@ -40,7 +40,7 @@ class EventHandler(commands.Cog):
                 res["event"]["roles"] = [{"name": event, "emoji": "☑️"}]
                 json.dump(res, jfile, indent=4)
 
-    @commands.has_role("Manager")         
+    @commands.has_role("Manager")
     @commands.command(name="evmsg")
     async def event_message(self, ctx, *message):
         guild = ctx.message.guild
@@ -54,7 +54,7 @@ class EventHandler(commands.Cog):
         with open(json_path, "w") as jfile:
             res["message_ids"] = MESSAGE_IDS
             json.dump(res, jfile, indent = 4)
-    
+
     @commands.command(name="evar")
     async def event_archive(self, ctx, id):
         guild = ctx.message.guild
@@ -74,6 +74,6 @@ class EventHandler(commands.Cog):
 
 
 
-        
+
 def setup(bot):
     bot.add_cog(EventHandler(bot))
