@@ -8,9 +8,9 @@ import re
 class TicketHandler(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.notification_channel_id = 938186568408121374
-        self.moderator_role_id = 938188223446937640
-        self.kucc_member_role = 938326510320885770
+        self.notification_channel_id = 929217894418628648
+        self.moderator_role_id = 932973381672910869
+        self.kucc_member_role = 931537416421015602
         self.ticket_category_name = "Tickets"
         self.claimed_category_name = "Active Support"
         self.verification_category_name = "KUCC Verification"
