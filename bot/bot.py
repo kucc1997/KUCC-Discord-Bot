@@ -5,8 +5,8 @@ from discord.ext import commands
 from dotenv import load_dotenv
 from discord_components import DiscordComponents
 
-# from cogs.welcomer import Welcomer
-# from cogs.roleshandler import RolesHandler
+from cogs.welcomer import Welcomer
+from cogs.roleshandler import RolesHandler
 
 ## Loading env variables
 load_dotenv()
@@ -34,21 +34,21 @@ for filename in os.listdir("cogs"):
         bot.load_extension(f'cogs.{filename[:-3]}')
 
 #loads a cog
-# @commands.has_role('Manager')
+@commands.has_role('Manager')
 @bot.command()
 async def load(ctx, extension):
     bot.load_extension(f'cogs.{extension}')
     await ctx.send("Loaded Successfully")
 
 #unloads a cog
-# @commands.has_role('Manager')
+@commands.has_role('Manager')
 @bot.command()
 async def unload(ctx, extension):
     bot.unload_extension(f'cogs.{extension}')
     await ctx.send("Unloaded Successfully")
 
 #reloads a cog
-# @commands.has_role('Manager')
+@commands.has_role('Manager')
 @bot.command()
 async def reload(ctx, extension):
     bot.unload_extension(f'cogs.{extension}')
