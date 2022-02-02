@@ -6,7 +6,7 @@ import json, os, asyncio
 from typing import Tuple
 
 # json_path =  ".cogs\json\roles.json"
-json_path =  os.path.join(os.getcwd(), "cogs", "json", "roles.json")
+json_path =  os.path.join(os.getcwd(),"bot", "cogs", "json", "roles.json")
 with open(json_path, mode="r") as jfile:
     res = json.load(jfile)
     COMMUNITY_ROLES = res["community"]["roles"]

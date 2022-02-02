@@ -29,7 +29,7 @@ async def on_ready():
     print('Logged in as', bot.user)
 
 # loads all cogs by default
-for filename in os.listdir("cogs"):
+for filename in os.listdir("./bot/cogs"):
     if filename.endswith('.py'):
         bot.load_extension(f'cogs.{filename[:-3]}')
 

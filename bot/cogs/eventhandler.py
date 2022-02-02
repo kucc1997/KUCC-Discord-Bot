@@ -1,7 +1,7 @@
 from discord.ext import commands
 import discord, os, json
 
-json_path =  os.path.join(os.getcwd(), "cogs", "json", "roles.json")
+json_path =  os.path.join(os.getcwd(),"bot", "cogs", "json", "roles.json")
 with open(json_path, mode="r") as jfile:
     res = json.load(jfile)
     MESSAGE_IDS = res["message_ids"]

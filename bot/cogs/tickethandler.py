@@ -93,11 +93,29 @@ class TicketHandler(commands.Cog):
                components=[])
 
     @commands.has_role('Manager')
-    @commands.command(name="delete")
+    @commands.command(name="delete", brief='Deletes all channels inside "Tickets" category.')
     async def delete(self, ctx):
         category = utils.get(ctx.guild.categories, name = self.ticket_category_name)
         for channel in category.channels:
             await channel.delete()
+
+    @commands.has_role('Manager')
+    @commands.command(name="set_notifier", brief='Sets up current channel to receive ticket notification.')
+    async def set_notifier(self, ctx):
+        self.notification_channel_id = ctx.channel.id
+        embed = Embed(description = f"{ctx.channel.mention} set as **ticket notification channel**")
+        await ctx.channel.send(embed=embed)
+
+    @commands.has_role('Manager')
+    @commands.command(name="check_categories", brief='Checks if required categories exists, if not creates.')
+    async def check_categories(self, ctx):
+        embed = Embed(description = "Checking if required categories exist...")
+        await ctx.channel.send(embed=embed, delete_after = 3)
+        categories = [self.ticket_category_name, self.claimed_category_name, self.verification_category_name]
+        for category in categories:
+            category_exists = utils.get(ctx.guild.categories, name = category)
+            if not category_exists:
+                await ctx.guild.create_category(category)
 
     # Giver KUCC member role to user on button press
     @commands.Cog.listener('on_button_click')
@@ -127,7 +145,7 @@ class TicketHandler(commands.Cog):
         if "query" in payload.custom_id.split('_'):
             category = utils.get(guild.categories, name = self.ticket_category_name)
             await self.create_support_ticket(payload, guild, category, ticket_overwrites)
-        elif "verification" in payload.custom_id.split('_'):
+        elif payload.custom_id == "member_verification":
             category = utils.get(guild.categories, name = self.verification_category_name)
             await self.create_verification_ticket(payload, guild, category, ticket_overwrites)
         elif payload.custom_id == "close_ticket":
@@ -137,7 +155,7 @@ class TicketHandler(commands.Cog):
             await self.claim_ticket_click(payload, guild, category)
 
     @commands.has_role('Manager')
-    @commands.command(name="setup_support")
+    @commands.command(name="setup_support", brief='Sets up support ticket-counter in current channel.')
     async def setup_support(self, ctx):
         guild = ctx.guild
         title = "KUCC Support"
@@ -163,20 +181,21 @@ class TicketHandler(commands.Cog):
             )
 
     @commands.has_role('Manager')
-    @commands.command(name="setup_verify")
+    @commands.command(name="setup_verify", brief='Sets up verification ticket-counter in current channel.')
     async def setup_verify(self, ctx):
         guild = ctx.guild
         title = "KUCC member role verification"
         description = '''There are various perks of having the **KUCC Member** role in this server. To access that role you need to first verify your identity as a KUCC member.
 
-                        Click the verify to open a ticket and start your verification process.
+                        Click the **verify** button to open a ticket and start your verification process or the **apply** button to apply for membership.
                         '''
         embedVar = Embed(title=title, description=description, color=0x384077)
         embedVar.set_footer(text="KUCC - Kathmandu University Computer Club", icon_url="http://kucc.ku.edu.np/wp-content/uploads/2020/11/kucc-2048x1666.png")
         await ctx.send(
             embed=embedVar,
             components=[[
-                Button(style=ButtonStyle.grey, label="🎟 Verify", custom_id="member_verification")
+                Button(style=ButtonStyle.grey, label="🎟 Verify", custom_id="member_verification"),
+                Button(style=ButtonStyle.URL, label="Apply Now", custom_id="redirect_kucc", url="http://kucc.ku.edu.np/register/")
                 ]]
             )
 
