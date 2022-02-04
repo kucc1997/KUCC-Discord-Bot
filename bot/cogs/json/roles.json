@@ -1,6 +1,6 @@
 {
-    "default_role_channel1": 932855435524988978,
-    "default_role_channel2": 932855498091409438,
+    "default_role_channel1": 932974162090278953,
+    "default_role_channel2": 939151573098037298,
     "community": {
         "roles": [
             {
@@ -36,8 +36,8 @@
             {
                 "name": "Dart",
                 "color": "#00B4AB",
-                "emoji": "<:dartt:931469737890820116>",
-                "emojiname": "dartt"
+                "emoji": "<:dartlang:933028238094114877>",
+                "emojiname": "dartlang"
             }
         ]
     },
@@ -60,14 +60,7 @@
             }
         ]
     },
-    "event": {
-        "roles": [
-            {
-                "name": "Intro To Ml Workshop",
-                "emoji": "\u2611\ufe0f"
-            }
-        ]
-    },
+    "event": {},
     "status": {
         "roles": [
             {
@@ -92,6 +85,15 @@
             }
         ]
     },
-    "message_ids": [],
+    "message_ids": [
+        {
+            "id": 939157510475104428,
+            "type": "status"
+        },
+        {
+            "id": 939157557732343838,
+            "type": "community"
+        }
+    ],
     "verify-channels": []
 }
