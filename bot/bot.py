@@ -28,12 +28,12 @@ async def on_ready():
     DiscordComponents(bot)
     print('Logged in as', bot.user)
 
-#loads all cogs by default 
+# loads all cogs by default
 for filename in os.listdir("./bot/cogs"):
     if filename.endswith('.py'):
         bot.load_extension(f'cogs.{filename[:-3]}')
-     
-#loads a cog   
+
+#loads a cog
 @commands.has_role('Manager')
 @bot.command()
 async def load(ctx, extension):
