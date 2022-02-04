@@ -8,8 +8,8 @@ import re
 class TicketHandler(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.notification_channel_id = 929217894418628648
-        self.moderator_role_id = 932973381672910869
+        self.notification_channel_id = 939156961520398357
+        self.moderator_role_id = 927212191571136523
         self.kucc_member_role = 931537416421015602
         self.ticket_category_name = "Tickets"
         self.claimed_category_name = "Active Support"
@@ -59,7 +59,7 @@ class TicketHandler(commands.Cog):
             channel = await guild.create_text_channel(channel_name, category = category, overwrites=overwrites)
 
         response = await payload.respond(content=f"<#{channel.id}> Ticket created")
-        info = '''Someone from the team will be with you sortly. Please send you **KUCC ID card** for verification.\n\nTo close🔐 the ticket press the button below. The green button is for use by **authorized individuals** only.'''
+        info = '''Someone from the team will be with you sortly. Please send a photo of your **KUCC ID card** for verification.\n\nTo close🔐 the ticket press the button below. The green button is for use by **authorized individuals** only.'''
         embedTic = Embed(description=info, color=0x384077)
         embedTic.set_footer(text="KUCC - Kathmandu University Computer Club", icon_url="http://kucc.ku.edu.np/wp-content/uploads/2020/11/kucc-2048x1666.png")
         await channel.send(
@@ -184,6 +184,7 @@ class TicketHandler(commands.Cog):
     @commands.command(name="setup_verify", brief='Sets up verification ticket-counter in current channel.')
     async def setup_verify(self, ctx):
         guild = ctx.guild
+        channel = self.bot.get_channel(939151573098037298)
         title = "KUCC member role verification"
         description = '''There are various perks of having the **KUCC Member** role in this server. To access that role you need to first verify your identity as a KUCC member.
 
@@ -191,7 +192,7 @@ class TicketHandler(commands.Cog):
                         '''
         embedVar = Embed(title=title, description=description, color=0x384077)
         embedVar.set_footer(text="KUCC - Kathmandu University Computer Club", icon_url="http://kucc.ku.edu.np/wp-content/uploads/2020/11/kucc-2048x1666.png")
-        await ctx.send(
+        await channel.send(
             embed=embedVar,
             components=[[
                 Button(style=ButtonStyle.grey, label="🎟 Verify", custom_id="member_verification"),

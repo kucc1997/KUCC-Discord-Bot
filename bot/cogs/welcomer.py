@@ -4,7 +4,7 @@ from PIL import Image, ImageFont, ImageDraw, ImageChops
 from io import BytesIO
 
 
-welcome_channel_id = 930427719907434496
+welcome_channel_id = 932974032519823360
 
 def circle(avatar, size=(400, 400)):
     avatar = avatar.resize(size, Image.ANTIALIAS).convert("RGBA")
