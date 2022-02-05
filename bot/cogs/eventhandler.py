@@ -16,7 +16,7 @@ class EventHandler(commands.Cog):
         self.moderator_role_id = 927212191571136523
         self.archive_category = "Archives"
 
-    @commands.has_role("Manager")
+    @commands.has_any_role('Manager', 'Moderator')
     @commands.command(brief="Create event roles and category >create_event Intro to Python Workshop")
     async def create_event(self, ctx, *event):
         guild = ctx.message.guild
@@ -76,11 +76,11 @@ class EventHandler(commands.Cog):
         await message.edit(embed=embed, components = [Button(style=ButtonStyle.grey, label="Close", custom_id=f"close_event_{'_'.join(event.split())}", disabled=True)])
         
 
-    @commands.has_role("Manager")
+    @commands.has_any_role('Manager', 'Moderator')
     @commands.command(name="event_msg", brief="Announce event and its description on the event channel\n **>eventmsg @event \"event description, mentions and links\"**")
     async def event_message(self, ctx, role, message):
         guild = ctx.message.guild
-        eve_announcement_channel = discord.utils.get(guild.channels, id=929031116566958100)
+        eve_announcement_channel = discord.utils.get(guild.channels, id=933010435559555183)
         role = discord.utils.get(guild.roles, id=int(role[3:-1]))
         msg = await eve_announcement_channel.send(message, components=[[
             Button(style=ButtonStyle.green, label="Interested", custom_id=f"role_{role.name}"),
@@ -122,12 +122,11 @@ class EventHandler(commands.Cog):
             await payload.respond(content="Aww, okay. Stay on hold for upcoming events.")
         elif payload.custom_id.startswith("role_"):
             event = payload.custom_id[5:]
-            print(event)
             role = discord.utils.get(payload.guild.roles, name=event)
             category = discord.utils.get(payload.guild.categories, name=event)
             channel = discord.utils.get(category.channels, name="general")
             await payload.user.add_roles(role)
-            await payload.respond(content=f"{role} role has been assigned.")
+            await payload.respond(content=f"{role.mention} role has been assigned.")
             await channel.send(f"Everything starts with an interest. {payload.user.mention} Stay tuned for further notice.")
             
     

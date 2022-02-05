@@ -4,10 +4,34 @@
     "community": {
         "roles": [
             {
-                "name": "Python",
-                "color": "#3572A5",
-                "emoji": "<:python:929338071424589844>",
-                "emojiname": "python"
+                "name": "Cyber-Security",
+                "color": "#000001",
+                "emoji": "<:hacker:931470353346220042>",
+                "emojiname": "hacker"
+            },
+            {
+                "name": "Dart",
+                "color": "#00B4AB",
+                "emoji": "<:dartlang:933028238094114877>",
+                "emojiname": "dartlang"
+            },
+            {
+                "name": "Design",
+                "color": "#a3e0e3",
+                "emoji": "\ud83c\udfa8",
+                "emojiname": "\ud83c\udfa8"
+            },
+            {
+                "name": "Documentation",
+                "color": "#58a052",
+                "emoji": "\ud83d\udcd4",
+                "emojiname": "\ud83d\udcd4"
+            },
+            {
+                "name": "Game-Development",
+                "color": "#56703a",
+                "emoji": "\ud83c\udfae",
+                "emojiname": "\ud83c\udfae"
             },
             {
                 "name": "Javascript",
@@ -16,28 +40,16 @@
                 "emojiname": "javascript"
             },
             {
-                "name": "Cyber-Security",
-                "color": "#000001",
-                "emoji": "<:hacker:931470353346220042>",
-                "emojiname": "hacker"
+                "name": "Python",
+                "color": "#3572A5",
+                "emoji": "<:python:929338071424589844>",
+                "emojiname": "python"
             },
             {
-                "name": "Game-Dev",
-                "color": "#56703a",
-                "emoji": "\ud83c\udfae",
-                "emojiname": "\ud83c\udfae"
-            },
-            {
-                "name": "ML",
+                "name": "Machine-Learning",
                 "color": "#9e5cb2",
                 "emoji": "<:ml:931448041934819329>",
                 "emojiname": "ml"
-            },
-            {
-                "name": "Dart",
-                "color": "#00B4AB",
-                "emoji": "<:dartlang:933028238094114877>",
-                "emojiname": "dartlang"
             }
         ]
     },
@@ -60,7 +72,14 @@
             }
         ]
     },
-    "event": {},
+    "event": {
+        "roles": [
+            {
+                "name": "Python Workshop",
+                "emoji": "\u2611\ufe0f"
+            }
+        ]
+    },
     "status": {
         "roles": [
             {
@@ -87,11 +106,11 @@
     },
     "message_ids": [
         {
-            "id": 939157510475104428,
+            "id": 939359980853801021,
             "type": "status"
         },
         {
-            "id": 939157557732343838,
+            "id": 939360010268442634,
             "type": "community"
         }
     ],
