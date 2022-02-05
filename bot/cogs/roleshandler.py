@@ -69,7 +69,7 @@ class RolesHandler(commands.Cog):
                 else:
                     print("Member not found")
 
-    @commands.has_role("Manager")
+    @commands.has_any_role('Manager')
     @commands.command(name="ccr", brief="Create community roles")
     async def create_roles(self, ctx):
         guild = ctx.guild
@@ -77,15 +77,18 @@ class RolesHandler(commands.Cog):
             await guild.create_role(name=role["name"], colour=discord.Colour(int(role["color"].replace("#", "0x"), 16)), mentionable = True)
             print(f"Creating {role['name']} role... in {guild.name} server")
 
-    @commands.has_role("Manager")
+    @commands.has_any_role('Manager')
     @commands.command(name="dcr", brief="Delete all community roles")
     async def delete_roles(self, ctx):
         guild = ctx.guild
         for role in COMMUNITY_ROLES:
             role_object = discord.utils.get(guild.roles, name=role["name"])
-            await role_object.delete()
+            try:
+                await role_object.delete()
+            except AttributeError:
+                pass
 
-    @commands.has_role("Manager")
+    @commands.has_any_role('Manager', 'Moderator')
     @commands.command(name="sutc", brief="Set up text channels for roles")
     async def set_up_text_channel(self, ctx=None, *channel: discord.TextChannel):
         if not channel:
@@ -126,7 +129,7 @@ class RolesHandler(commands.Cog):
             await member.remove_roles(ce_role)
             await payload.respond(content="Assigned CS role")
 
-    @commands.has_role("Manager")
+    @commands.has_any_role('Manager', 'Moderator')
     @commands.command(name="surr", brief="Sets up roles in role channels")
     async def set_up_reaction_roles(self, ctx):
         if not self.channel1:

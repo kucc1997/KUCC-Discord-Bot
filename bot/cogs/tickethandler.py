@@ -92,21 +92,21 @@ class TicketHandler(commands.Cog):
         await message.edit(embed=embedNotification,
                components=[])
 
-    @commands.has_role('Manager')
+    @commands.has_any_role('Manager', 'Moderator')
     @commands.command(name="delete", brief='Deletes all channels inside "Tickets" category.')
     async def delete(self, ctx):
         category = utils.get(ctx.guild.categories, name = self.ticket_category_name)
         for channel in category.channels:
             await channel.delete()
 
-    @commands.has_role('Manager')
+    @commands.has_any_role('Manager', 'Moderator')
     @commands.command(name="set_notifier", brief='Sets up current channel to receive ticket notification.')
     async def set_notifier(self, ctx):
         self.notification_channel_id = ctx.channel.id
         embed = Embed(description = f"{ctx.channel.mention} set as **ticket notification channel**")
         await ctx.channel.send(embed=embed)
 
-    @commands.has_role('Manager')
+    @commands.has_any_role('Manager', 'Moderator')
     @commands.command(name="check_categories", brief='Checks if required categories exists, if not creates.')
     async def check_categories(self, ctx):
         embed = Embed(description = "Checking if required categories exist...")
@@ -154,7 +154,7 @@ class TicketHandler(commands.Cog):
             category = utils.get(guild.categories, name = self.claimed_category_name)
             await self.claim_ticket_click(payload, guild, category)
 
-    @commands.has_role('Manager')
+    @commands.has_any_role('Manager', 'Moderator')
     @commands.command(name="setup_support", brief='Sets up support ticket-counter in current channel.')
     async def setup_support(self, ctx):
         guild = ctx.guild
@@ -180,7 +180,7 @@ class TicketHandler(commands.Cog):
                 ]]
             )
 
-    @commands.has_role('Manager')
+    @commands.has_any_role('Manager', 'Moderator')
     @commands.command(name="setup_verify", brief='Sets up verification ticket-counter in current channel.')
     async def setup_verify(self, ctx):
         guild = ctx.guild

@@ -25,7 +25,7 @@ class Welcomer(commands.Cog):
         if channel is not None:
             embed = discord.Embed(
                 title=f"Welcome to the server  :partying_face:",
-                colour=1234567, description=f"{member.mention},\n\nPlease review <#929008518466506844> to gain access to the rest of the server.\n"
+                colour=1234567, description=f"{member.mention},\n\nPlease review <#932974078535565352> to gain access to the rest of the server.\n"
             ).add_field(
                 name=f"Members Count:",
                 value=f"{member.guild.member_count}",
