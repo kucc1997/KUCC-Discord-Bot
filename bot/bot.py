@@ -55,4 +55,9 @@ async def reload(ctx, extension):
     bot.load_extension(f'cogs.{extension}')
     await ctx.send("Reloaded Successfully")
 
+@commands.has_any_role("Manager")
+@bot.command()
+async def clear(ctx, amount: int = None):
+	await ctx.channel.purge(limit=amount)
+
 bot.run(TOKEN)

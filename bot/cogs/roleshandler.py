@@ -119,15 +119,23 @@ class RolesHandler(commands.Cog):
     async def role_button_clicked(self, payload):
         ce_role = discord.utils.get(payload.guild.roles, name="CE")
         cs_role = discord.utils.get(payload.guild.roles, name="CS")
+        ai_role = discord.utils.get(payload.guild.roles, name="AI")
         member = payload.user
         if payload.custom_id == "CE":
             await member.add_roles(ce_role)
             await member.remove_roles(cs_role)
-            await payload.respond(content="Assigned CE role")
+            await member.remove_roles(ai_role)
+            await payload.respond(content="Assigned Computer Engineering role")
         elif payload.custom_id == "CS":
             await member.add_roles(cs_role)
             await member.remove_roles(ce_role)
-            await payload.respond(content="Assigned CS role")
+            await member.remove_roles(ai_role)
+            await payload.respond(content="Assigned Computer Science role")
+        elif payload.custom_id == "AI":
+            await member.add_roles(ai_role)
+            await member.remove_roles(cs_role)
+            await member.remove_roles(ce_role)
+            await payload.respond(content="Assigned BTech AI role")
 
     @commands.has_any_role('Manager', 'Moderator')
     @commands.command(name="surr", brief="Sets up roles in role channels")
@@ -154,7 +162,8 @@ class RolesHandler(commands.Cog):
         embed = discord.Embed(title="KUCC Faculty", description="Select your faculty from Department of Computer Science and Engineering\n**Computer Engineering** or **Computer Science**\n")
         await self.channel2.send(embed=embed, components=[[
             Button(style=ButtonStyle.green, label="CE", custom_id="CE"),
-            Button(style=ButtonStyle.green, label="CS", custom_id="CS")]
+            Button(style=ButtonStyle.green, label="CS", custom_id="CS"),
+            Button(style=ButtonStyle.green, label="BTech AI", custom_id="AI")]
         ])
 
         ## KUCC Member
