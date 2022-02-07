@@ -127,7 +127,7 @@ class EventHandler(commands.Cog):
             channel = discord.utils.get(category.channels, name="general")
             await payload.user.add_roles(role)
             await payload.respond(content=f"{role.mention} role has been assigned.")
-            await channel.send(f"Everything starts with an interest. {payload.user.mention} Stay tuned for further notice.")
+            # await channel.send(f"Everything starts with an interest. {payload.user.mention} Stay tuned for further notice.")
             
     
 

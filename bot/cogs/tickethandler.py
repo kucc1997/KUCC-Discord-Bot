@@ -127,6 +127,9 @@ class TicketHandler(commands.Cog):
                     member_role = utils.get(message.guild.roles, id= self.kucc_member_role)
                     await message.mentions[0].add_roles(member_role)
                     response = await payload.respond(content=f"Role **{member_role}** granted to **{message.mentions[0]}**")
+                    await payload.channel.delete()
+                    dm = await message.mentions[0].create_dm()
+                    await dm.send("Verified! You have been assigned KUCC member role. ✅")
             else:
                 response = await payload.respond(content=f"**Give the Role** button is for use by **authorized individuals** only")
 
