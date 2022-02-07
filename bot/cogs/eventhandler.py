@@ -12,7 +12,8 @@ class EventHandler(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.event_channel_id = 933010435559555183
-        self.event_mod_channel_id = 939152289791344670
+        self.event_log_channel_id = 939152289791344670
+        self.event_mod_log = 940252051433226260
         self.moderator_role_id = 927212191571136523
         self.archive_category = "Archives"
 
@@ -46,11 +47,16 @@ class EventHandler(commands.Cog):
                 res["event"]["roles"] = [{"name": event, "emoji": "☑️"}]
                 json.dump(res, jfile, indent=4)
             
-            mod_channel = self.bot.get_channel(self.event_mod_channel_id)
+            log_channel = self.bot.get_channel(self.event_log_channel_id)
             embed = discord.Embed(title=event, description=f"**Created by:** {ctx.author.mention}\n\nEvent category: **{event}**\n\nEvent Role: {event_role.mention}\n\nEvent channel: {gen_tc.mention}\n\nStatus: **Open**\n", color=colour)
-            await mod_channel.send(embed=embed, components=[
+            await log_channel.send(embed=embed, components=[
                 Button(style=ButtonStyle.red, label="Close", custom_id=f"close_event_{'_'.join(event.split())}")
             ])
+
+            mod_channel = self.bot.get_channel(self.event_mod_log)
+            embed = discord.Embed(title=f"Event: {event}", description=f"Created by {ctx.author.mention}")
+            await mod_channel.send(embed=embed)
+
     
     async def close_event(self, payload, event):
         guild = payload.guild
@@ -63,7 +69,7 @@ class EventHandler(commands.Cog):
         await event_role.delete()
 
         ## Archiving channel
-        await general_tc.edit(category=arc_category, name=category.name)
+        await general_tc.edit(category=arc_category, name=category.name, sync_permissions=True)
         for c in category.channels:
             await c.delete()
         await category.delete()
@@ -74,7 +80,12 @@ class EventHandler(commands.Cog):
         description = embed.description[:-8] + "**Closed**\n"
         embed.description = description
         await message.edit(embed=embed, components = [Button(style=ButtonStyle.grey, label="Close", custom_id=f"close_event_{'_'.join(event.split())}", disabled=True)])
+
+        mod_channel = self.bot.get_channel(self.event_mod_log)
+        embed = discord.Embed(title=f"Event: {category.name}", description=f"Closed by {payload.user.mention}")
+        await mod_channel.send(embed=embed)
         
+
 
     @commands.has_any_role('Manager', 'Moderator')
     @commands.command(name="event_msg", brief="Announce event and its description on the event channel\n **>eventmsg @event \"event description, mentions and links\"**")
@@ -84,7 +95,6 @@ class EventHandler(commands.Cog):
         role = discord.utils.get(guild.roles, id=int(role[3:-1]))
         msg = await eve_announcement_channel.send(message, components=[[
             Button(style=ButtonStyle.green, label="Interested", custom_id=f"role_{role.name}"),
-            Button(style=ButtonStyle.red, label="Not Interested", custom_id="not_interested"),
         ]])
 
     @commands.command(name="evar", brief="Archive event with id (not necessary) >evar <category_id>")
@@ -104,7 +114,11 @@ class EventHandler(commands.Cog):
     @commands.Cog.listener('on_button_click')
     async def event_button_clicked(self, payload):
         message = payload.message
-        event = message.embeds[0].title
+        try:
+            event = message.embeds[0].title
+        except IndexError:
+            event = ""
+
         try:
             if payload.custom_id == f"close_event_{'_'.join(event.split())}":
                 moderator_role = discord.utils.get(payload.guild.roles, id=self.moderator_role_id)
@@ -126,7 +140,7 @@ class EventHandler(commands.Cog):
             category = discord.utils.get(payload.guild.categories, name=event)
             channel = discord.utils.get(category.channels, name="general")
             await payload.user.add_roles(role)
-            await payload.respond(content=f"{role.mention} role has been assigned.")
+            await payload.respond(content=f"{role.mention} role has been assigned. Checkout {channel.mention} for event discussions.")
             # await channel.send(f"Everything starts with an interest. {payload.user.mention} Stay tuned for further notice.")
             
 

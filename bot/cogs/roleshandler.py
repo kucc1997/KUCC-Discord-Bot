@@ -119,7 +119,7 @@ class RolesHandler(commands.Cog):
     async def role_button_clicked(self, payload):
         ce_role = discord.utils.get(payload.guild.roles, name="CE")
         cs_role = discord.utils.get(payload.guild.roles, name="CS")
-        ai_role = discord.utils.get(payload.guild.roles, name="AI")
+        ai_role = discord.utils.get(payload.guild.roles, name="BTech AI")
         member = payload.user
         if payload.custom_id == "CE":
             await member.add_roles(ce_role)
