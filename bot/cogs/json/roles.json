@@ -75,7 +75,7 @@
     "event": {
         "roles": [
             {
-                "name": "Python Workshop",
+                "name": "Flutter Meetup",
                 "emoji": "\u2611\ufe0f"
             }
         ]
@@ -106,11 +106,11 @@
     },
     "message_ids": [
         {
-            "id": 939359980853801021,
+            "id": 940227112835633163,
             "type": "status"
         },
         {
-            "id": 939360010268442634,
+            "id": 940227200337199145,
             "type": "community"
         }
     ],
